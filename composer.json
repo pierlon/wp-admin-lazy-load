@@ -1,0 +1,34 @@
+{
+    "name": "pierlo/wp-lazy-load-admin",
+    "description": "Lazy load for the WordPress admin panel",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Pierre Gordon",
+            "email": "pierregordon@protonmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.6"
+    },
+    "require-dev": {
+        "wp-coding-standards/wpcs": "^2.1",
+        "phpcompatibility/phpcompatibility-wp": "^2.1",
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
+        "brainmaestro/composer-git-hooks": "^2.8",
+        "xwp/wp-dev-lib": "^1.2"
+    },
+    "extra": {
+        "hooks": {
+            "pre-commit": "./vendor/xwp/wp-dev-lib/scripts/pre-commit"
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "vendor/bin/cghooks add --no-lock"
+        ],
+        "post-update-cmd": [
+            "vendor/bin/cghooks update"
+        ]
+    }
+}
