@@ -1,43 +1,76 @@
 <?xml version="1.0"?>
 <ruleset name="WordPress Coding Standards for Plugins">
-	<description>Generally-applicable sniffs for WordPress plugins</description>
+	<description>A custom set of rules to check for a WPized WordPress project</description>
 
-	<rule ref="WordPress-Extra" />
-	<rule ref="WordPress-Docs" />
+	<!-- Exclude the Composer Vendor directory. -->
+	<exclude-pattern>/vendor/*</exclude-pattern>
+
+	<!-- Exclude the Node Modules directory. -->
+	<exclude-pattern>/node_modules/*</exclude-pattern>
+
+	<!-- Include the WordPress-Extra standard. -->
+	<rule ref="WordPress-Extra">
+		<!--
+		We may want a middle ground though. The best way to do this is add the
+		entire ruleset, then rule by rule, remove ones that don't suit a project.
+		We can do this by running `phpcs` with the '-s' flag, which allows us to
+		see the names of the sniffs reporting errors.
+		Once we know the sniff names, we can opt to exclude sniffs which don't
+		suit our project like so.
+
+		The below two examples just show how you can exclude rules.
+		They are not intended as advice about which sniffs to exclude.
+		-->
+
+		<!--
+		<exclude name="WordPress.WhiteSpace.ControlStructureSpacing"/>
+		<exclude name="WordPress.Security.EscapeOutput"/>
+		-->
+	</rule>
+
+	<!-- Let's also check that everything is properly documented. -->
+	<rule ref="WordPress-Docs">
+		<exclude name="Squiz.Commenting.FileComment" />
+	</rule>
+
+	<!-- Add in some extra rules from other standards. -->
+	<rule ref="Generic.CodeAnalysis.UnusedFunctionParameter"/>
+	<rule ref="Generic.Commenting.Todo"/>
+
+	<!-- Check for PHP cross-version compatibility. -->
+	<config name="testVersion" value="5.6-"/>
+	<rule ref="PHPCompatibilityWP"/>
 
 	<!--
-	<config name="minimum_supported_wp_version" value="4.6"/>
+	To get the optimal benefits of using WPCS, we should add a couple of
+	custom properties.
+	Adjust the values of these properties to fit our needs.
+
+	For information on additional custom properties available, check out
+	the wiki:
+	https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/wiki/Customizable-sniff-properties
+	-->
+	<config name="minimum_supported_wp_version" value="5.0"/>
 
 	<rule ref="WordPress.WP.I18n">
 		<properties>
 			<property name="text_domain" type="array">
-				<element value="example"/>
-				<element value="default"/>
+				<element value="pierlo-lazy-load-admin"/>
 			</property>
 		</properties>
 	</rule>
 
-	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
-		<properties>
-			<property name="prefixes" type="array">
-				<element value="example"/>
-			</property>
-		</properties>
+	<!-- Include the WordPress-Core standard. -->
+	<rule ref="WordPress-Core">
+		<exclude name="WordPress.Arrays.MultipleStatementAlignment" />
+		<exclude name="Generic.Formatting.MultipleStatementAlignment" />
+		<exclude name="WordPress.Files.FileName" />
 	</rule>
-	-->
-
-	<rule ref="PHPCompatibilityWP"/>
-	<config name="testVersion" value="5.2-"/>
 
 	<arg name="extensions" value="php"/>
-
-	<!-- Show sniff codes in all reports -->
-	<arg value="s"/>
+	<arg name="colors" />
+	<arg value="s"/> <!-- Show sniff codes in all reports -->
 
 	<!-- Allow invoking just `phpcs` on command line without assuming STDIN for file input. -->
 	<file>.</file>
-
-	<exclude-pattern>*/dev-lib/*</exclude-pattern>
-	<exclude-pattern>*/node_modules/*</exclude-pattern>
-	<exclude-pattern>*/vendor/*</exclude-pattern>
 </ruleset>
