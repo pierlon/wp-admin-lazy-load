@@ -15,8 +15,6 @@
         "wp-coding-standards/wpcs": "^2.1",
         "phpcompatibility/phpcompatibility-wp": "^2.1",
         "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
-        "brainmaestro/composer-git-hooks": "^2.8",
-        "xwp/wp-dev-lib": "^1.2",
         "10up/wp_mock": "^0.4.2",
         "mockery/mockery": "^1.2",
         "php-coveralls/php-coveralls": "^2.1",
@@ -31,18 +29,5 @@
 		"psr-4": {
 			"Pierlo\\AdminLazyLoadTest\\": "tests/php/"
 		}
-	},
-	"extra": {
-        "hooks": {
-            "pre-commit": "./vendor/xwp/wp-dev-lib/scripts/pre-commit"
-        }
-    },
-    "scripts": {
-        "post-install-cmd": [
-            "vendor/bin/cghooks add --no-lock"
-        ],
-        "post-update-cmd": [
-            "vendor/bin/cghooks update"
-        ]
-    }
+	}
 }
