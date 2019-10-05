@@ -1,0 +1,10 @@
+{
+  "name": "admin-lazy-load",
+  "version": "1.0.0-alpha",
+  "description": "Lazy load for the WordPress admin panel",
+  "author": "Pierre Gordon <pierregordon@protonmail.com>",
+  "devDependencies": {
+    "@wordpress/eslint-plugin": "^3.1.0",
+    "eslint": "^6.5.1"
+  }
+}
