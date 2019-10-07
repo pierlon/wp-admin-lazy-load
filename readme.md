@@ -8,3 +8,4 @@ Lazyload for the WordPress admin panel.
 - Add Themes
 - Media Library
 - Add Plugins
+- Edit Page (editing posts with the Block editor)

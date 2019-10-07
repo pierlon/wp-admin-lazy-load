@@ -14,6 +14,9 @@ import { lazyLoadImages, lazyLoadTemplate } from './utils';
  */
 document.addEventListener( 'DOMContentLoaded', () => {
 	switch ( adminLazyLoad.page ) {
+		case 'post-edit-blocks':
+			lazyLoadImages( document.querySelectorAll( '#editor img' ) );
+			break;
 		case 'plugin-install':
 			lazyLoadImages( document.querySelectorAll( '.plugin-icon' ) );
 			break;
