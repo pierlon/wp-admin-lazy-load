@@ -6,3 +6,4 @@ Lazyload for the WordPress admin panel.
 
 - Themes
 - Add Themes
+- Media Library

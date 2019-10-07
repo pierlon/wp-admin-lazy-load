@@ -42,6 +42,7 @@ class AdminLazyLoadPlugin {
 		$hooks = array(
 			'themes.php',
 			'theme-install.php',
+			'upload.php',
 		);
 
 		// Stop if we don't support this page.

@@ -21,5 +21,8 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		case 'theme-install':
 			lazyLoadTemplate( 'tmpl-theme' );
 			break;
+		case 'upload':
+			lazyLoadTemplate( 'tmpl-attachment' );
+			break;
 	}
 } );
