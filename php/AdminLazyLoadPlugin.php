@@ -40,6 +40,7 @@ class AdminLazyLoadPlugin {
 	public function admin_enqueue_scripts( $hook ) {
 		// List of pages we support.
 		$hooks = array(
+			'plugin-install.php',
 			'themes.php',
 			'theme-install.php',
 			'upload.php',

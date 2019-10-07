@@ -14,6 +14,9 @@ import { lazyLoadImages, lazyLoadTemplate } from './utils';
  */
 document.addEventListener( 'DOMContentLoaded', () => {
 	switch ( adminLazyLoad.page ) {
+		case 'plugin-install':
+			lazyLoadImages( document.querySelectorAll( '.plugin-icon' ) );
+			break;
 		case 'themes':
 			lazyLoadImages( document.querySelectorAll( '.theme-screenshot img' ) );
 			lazyLoadTemplate( 'tmpl-theme' );
